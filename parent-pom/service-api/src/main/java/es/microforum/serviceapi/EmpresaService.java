@@ -7,7 +7,7 @@ import es.microforum.model.Empresa;
 
 public interface EmpresaService {
 	// Find all empresas
-	public List<Empresa> findAll();
+	//public List<Empresa> findAll();
 	
 	// Find a empresa by nif
 	public Empresa findByNif(String nif);
@@ -18,5 +18,5 @@ public interface EmpresaService {
 	// Delete a empresa	
 	public void delete(Empresa empresa);
 	
-	public List<Empleado> findAllEmpleados();
+	//public List<Empleado> findAllEmpleados();
 }

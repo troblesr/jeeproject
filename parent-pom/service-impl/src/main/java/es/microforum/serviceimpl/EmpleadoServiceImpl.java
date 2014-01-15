@@ -3,6 +3,8 @@ package es.microforum.serviceimpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.google.common.collect.Lists;
@@ -11,6 +13,10 @@ import es.microforum.model.Empleado;
 import es.microforum.serviceapi.EmpleadoService;
 import es.microforum.serviceimpl.repository.EmpleadoRepository;
 
+
+@Service("jpaEmpleadoService")
+@Repository
+@Transactional
 public class EmpleadoServiceImpl implements EmpleadoService {
 
 	@Autowired
@@ -26,19 +32,17 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 		return empleadoRepository.findByDni(dni);		
 	}
 
-	@Override
 	public Empleado save(Empleado empleado) {
-		return null;
+		return empleadoRepository.save(empleado);
 	}
 
-	@Override
 	public void delete(Empleado empleado) {
+		empleadoRepository.delete(empleado);
 	}
 
-	@Override
+	@Transactional(readOnly=true)
 	public List<Empleado> findByNombre(String nombre) {
-		// TODO Auto-generated method stub
-		return null;
+		return empleadoRepository.findByNombre(nombre);
 	}
 
 }

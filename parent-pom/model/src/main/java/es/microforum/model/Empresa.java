@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -21,6 +22,9 @@ import javax.persistence.Version;
  */
 @Entity
 @Table(name = "empresa", catalog = "jee")
+/*@NamedQueries({
+	@NamedQuery(name="Empresa.findAll",query="select e from Empresa e")
+})*/
 public class Empresa implements java.io.Serializable {
 
 	private String nif;
@@ -75,7 +79,7 @@ public class Empresa implements java.io.Serializable {
 		this.nombre = nombre;
 	}
 
-	@Column(name = "direccion-fiscal", length = 45)
+	@Column(name = "direccionFiscal", length = 45)
 	public String getDireccionFiscal() {
 		return this.direccionFiscal;
 	}
@@ -85,7 +89,7 @@ public class Empresa implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "fecha-inicio-actividades", length = 19)
+	@Column(name = "fechaInicioActividades", length = 19)
 	public Date getFechaInicioActividades() {
 		return this.fechaInicioActividades;
 	}

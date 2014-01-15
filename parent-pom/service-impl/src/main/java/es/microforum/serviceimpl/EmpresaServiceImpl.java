@@ -28,14 +28,16 @@ public class EmpresaServiceImpl implements EmpresaService {
 	}
 
 	public Empresa save(Empresa empresa) {
-		return null;
+		return empresaRepository.save(empresa);
 	}
 
-	public void delete(Empresa empresa) {}
-
-	@Override
+	public void delete(Empresa empresa) {
+		empresaRepository.delete(empresa);
+	}
+	
+	/*@Transactional(readOnly=true)
 	public List<Empleado> findAllEmpleados() {
-		return null;
-	}
+		return empresaRepository.findAllEmpleados();
+	}*/
 
 }
