@@ -12,6 +12,7 @@
 		<data.version>1.0.1.RELEASE</data.version>
 		<list.version>10.0.1</list.version>
 		<persistence.version>1.0.2</persistence.version>
+		<annotations.version>3.5.6-Final</annotations.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -56,6 +57,11 @@
 				<groupId>javax.persistence</groupId>
 				<artifactId>persistence-api</artifactId>
 				<version>${persistence.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-annotations</artifactId>
+				<version>${annotations.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

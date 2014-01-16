@@ -34,10 +34,9 @@ public class EmpresaServiceImpl implements EmpresaService {
 	public void delete(Empresa empresa) {
 		empresaRepository.delete(empresa);
 	}
-	
-	/*@Transactional(readOnly=true)
-	public List<Empleado> findAllEmpleados() {
+
+	public List<Empleado> findAllEmpleados(){
 		return empresaRepository.findAllEmpleados();
-	}*/
+	}
 
 }

@@ -45,4 +45,9 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 		return empleadoRepository.findByNombre(nombre);
 	}
 
+	
+	public void deleteAll() {
+		empleadoRepository.deleteAll();	
+	}
+
 }

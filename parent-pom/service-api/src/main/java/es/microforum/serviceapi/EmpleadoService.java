@@ -20,4 +20,6 @@ public interface EmpleadoService {
 	
 	// Find e by nombre
 	public List<Empleado> findByNombre(String nombre);
+	
+	public void deleteAll();
 }

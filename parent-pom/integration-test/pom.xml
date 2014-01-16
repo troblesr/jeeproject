@@ -14,7 +14,6 @@
 		<maven.test.failure.ignore>true</maven.test.failure.ignore>
 		<spring.framework.version>4.0.0.RELEASE</spring.framework.version>
 	</properties>
-	 
 	<dependencies>
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -122,9 +121,8 @@
 			<groupId>es.microforum</groupId>
   			<artifactId>model</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		</dependency>           
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>

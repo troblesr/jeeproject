@@ -8,10 +8,13 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityResult;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,9 +25,16 @@ import javax.persistence.Version;
  */
 @Entity
 @Table(name = "empresa", catalog = "jee")
-/*@NamedQueries({
-	@NamedQuery(name="Empresa.findAll",query="select e from Empresa e")
-})*/
+@NamedQueries({
+	@NamedQuery(name="Empresa.findAll",
+			    query="select e from Empresa e"), 
+	@NamedQuery(name="Empresa.findByNif", 
+			    query="select distinct e from Empresa e where e.nif = :nif"),
+})
+@SqlResultSetMapping(
+		name="contactResult",
+		entities=@EntityResult(entityClass=Empresa.class)
+)
 public class Empresa implements java.io.Serializable {
 
 	private String nif;
