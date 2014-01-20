@@ -2,23 +2,21 @@ package es.microforum.model;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import es.microforum.model.Empleado;
 import es.microforum.model.Empresa;
 
-//@RunWith(SpringJUnit4ClassRunner.class)
 
 public class EmpleadoModelTest {
-
-//@ContextConfiguration(locations="classpath:jdb.xml");
+	
 	Empleado empleado;
 	Empleado empleado2;
 	Empleado empleado3;
 	Empresa empresa;
 	byte[] imagen;
+	
 	@Before
 	public void setUp() throws Exception {
 		empleado = new Empleado();

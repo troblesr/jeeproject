@@ -8,11 +8,13 @@
 	<properties>
 		<spring.version>4.0.0.RELEASE</spring.version>
 		<junit.version>4.11</junit.version>
-		<jpa.version>1.0.1.Final</jpa.version>
-		<data.version>1.0.1.RELEASE</data.version>
-		<list.version>10.0.1</list.version>
-		<persistence.version>1.0.2</persistence.version>
-		<annotations.version>3.5.6-Final</annotations.version>
+		<hibernatejpa.version>1.0.1.Final</hibernatejpa.version>
+		<springdata.version>1.4.2.RELEASE</springdata.version>
+		<guava.version>10.0.1</guava.version>
+		<hibernate.version>3.6.8.Final</hibernate.version>
+		<log4j.version>1.2.16</log4j.version>
+		<log4j12.version>1.6.1</log4j12.version>
+		<mysql.version>5.1.6</mysql.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -33,35 +35,71 @@
 				<artifactId>spring-webmvc</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
+			<!-- Dependencias adicionales al proyecto base -->
+			<!-- Dependencia necesaria para la estiquetas de Empleado.java y Empresa.java, import javax.persistence... -->
 			<dependency>
 			    <groupId>org.hibernate.javax.persistence</groupId>
 			    <artifactId>hibernate-jpa-2.0-api</artifactId>
-				<version>${jpa.version}</version>
+				<version>${hibernatejpa.version}</version>
 			</dependency>
-			<dependency>
-			    <groupId>org.hibernate.javax.persistence</groupId>
-			    <artifactId>hibernate-jpa-2.0-api</artifactId>
-				<version>${jpa.version}</version>
-			</dependency>
+			<!-- Contiene las etiquetas usadas en las implementaciones de los servicios -->
 			<dependency>
 	            <groupId>org.springframework.data</groupId>
 	            <artifactId>spring-data-jpa</artifactId>
-	            <version>${data.version}</version>	
+	            <version>${springdata.version}</version>	
         	</dependency>
-        	<dependency>
-	            <groupId>com.google.guava</groupId>
-	            <artifactId>guava</artifactId>
-	            <version>${list.version}</version>
-        	</dependency>
-        	<dependency>
-				<groupId>javax.persistence</groupId>
-				<artifactId>persistence-api</artifactId>
-				<version>${persistence.version}</version>
+        	<!-- Contiene la lista que se emplea en las implementaciones de los servicios -->
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
+			</dependency>
+			<!-- spring-data-app-context -->
+			<!-- Bean Factory and JavaBeans utilities (depends on spring-core) Define this if you use Spring Bean APIs (org.springframework.beans.*) -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<!-- Application Context (depends on spring-core, spring-expression, spring-aop, spring-beans) This is the central artifact for Spring's Dependency Injection Container and is generally always defined -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<!-- Object-to-Relation-Mapping (ORM) integration with Hibernate, JPA and iBatis. (depends on spring-core, spring-beans, spring-context, spring-tx) Define this if you need ORM (org.springframework.orm.*) -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-orm</artifactId>
+				<version>${spring.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-annotations</artifactId>
-				<version>${annotations.version}</version>
+				<artifactId>hibernate-entitymanager</artifactId>
+				<version>${hibernate.version}</version>
+			</dependency>
+			<!-- log4j.propierties -->
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
+			<!-- log4j12.propierties -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>${log4j12.version}</version>
+			</dependency>
+			<!-- Support for testing Spring applications with tools such as JUnit and TestNG This artifact is generally always defined with a 'test' scope for the integration testing framework and unit testing stubs -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

@@ -2,10 +2,11 @@ package es.microforum.serviceapi;
 
 import java.util.List;
 
-import es.microforum.model.Empleado;
+//import es.microforum.model.Empleado;
 import es.microforum.model.Empresa;
 
 public interface EmpresaService {
+	
 	// Find all empresas
 	public List<Empresa> findAll();
 	
@@ -18,5 +19,8 @@ public interface EmpresaService {
 	// Delete a empresa	
 	public void delete(Empresa empresa);
 	
-	public List<Empleado> findAllEmpleados();
+	//find by Nombre
+	public List<Empresa> findByNombre(String nombre);
+	
+	//public List<Empleado> findAllEmpleados();
 }

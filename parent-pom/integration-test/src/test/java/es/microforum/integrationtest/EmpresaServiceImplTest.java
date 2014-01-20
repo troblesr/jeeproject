@@ -3,9 +3,7 @@ package es.microforum.integrationtest;
 import static org.junit.Assert.*;
 
 import java.util.List;
-import java.util.Set;
-
-import javax.transaction.Transactional;
+//import java.util.Set;
 
 import org.junit.After;
 import org.junit.Before;
@@ -15,13 +13,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
-import es.microforum.model.Empleado;
+//import es.microforum.model.Empleado;
 import es.microforum.model.Empresa;
 import es.microforum.serviceapi.EmpresaService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring-data-app-context.xml")
+@ContextConfiguration(locations={"classpath:spring-data-app-context.xml"})
 @TransactionConfiguration(defaultRollback = true)
 
 public class EmpresaServiceImplTest {
@@ -30,46 +29,58 @@ public class EmpresaServiceImplTest {
 	EmpresaService empresaService;
 	Empresa empresaSave;
 	Empresa empresa;
-	Empleado empleado1;
-	Empleado empleado2;
-	Set<Empleado> empleados;
+	//Empleado empleado1;
+	//Empleado empleado2;
+	//Set<Empleado> empleados;
 	
 	@Before
 	public void setUp() throws Exception {
 		empresa = new Empresa("1");
-		empleados.add(empleado1);
-		empleados.add(empleado2);
-		empresa.setEmpleados(empleados);
+		empresa.setNombre("Empresa1");
+		empresaSave = new Empresa("125");
+		//empleados.add(empleado1);
+		//empleados.add(empleado2);
+		//empresa.setEmpleados(empleados);
 		empresaSave.setNif("125");
 		empresaService.save(empresa);
 	}
 
 	@Test
 	public void testFindAll() {
-		List<Empresa> empresas;
+		List<Empresa> empresas = empresaService.findAll();
+		assertTrue(empresas.contains(empresa));
 	}
-
+	
 	@Test
 	public void testFindByNif() {
-		assertTrue(true);
+		empresa = empresaService.findByNif("1");
+		assertTrue(empresa.getNif().equals("1"));
 	}
 
 	@Test
 	@Transactional
 	public void testSave() {
-		assertTrue(true);
+		empresa = empresaService.save(empresaSave);
+		assertTrue(empresa.getNif().equals("125"));
 	}
 
 	@Test
 	@Transactional
 	public void testDelete() {
-		assertTrue(true);
+		empresaService.delete(empresa);
+		List<Empresa> empresas = empresaService.findAll();
+		assertTrue(!(empresas.contains(empresa)));
 	}
-
+	
 	@Test
+	public void testFindByNombre(){
+		List<Empresa> empresas = empresaService.findByNombre("Empresa1");
+		assertTrue(empresas.contains(empresa));
+	}
+	/*@Test
 	public void testFindAllEmpleados() {
 		assertTrue(true);
-	}
+	}*/
 	
 	@After
 	public void tearDown() throws Exception {

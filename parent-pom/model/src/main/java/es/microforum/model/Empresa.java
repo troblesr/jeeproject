@@ -28,13 +28,13 @@ import javax.persistence.Version;
 @NamedQueries({
 	@NamedQuery(name="Empresa.findAll",
 			    query="select e from Empresa e"), 
-	@NamedQuery(name="Empresa.findByNif", 
-			    query="select distinct e from Empresa e where e.nif = :nif"),
+	@NamedQuery(name="Empresa.findById", 
+			    query="select e from Empresa e where e.nif = :nif"),
 })
-@SqlResultSetMapping(
+/*@SqlResultSetMapping(
 		name="contactResult",
 		entities=@EntityResult(entityClass=Empresa.class)
-)
+)*/
 public class Empresa implements java.io.Serializable {
 
 	private String nif;

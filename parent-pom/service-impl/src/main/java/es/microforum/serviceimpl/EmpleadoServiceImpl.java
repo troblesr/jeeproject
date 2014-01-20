@@ -11,7 +11,7 @@ import com.google.common.collect.Lists;
 
 import es.microforum.model.Empleado;
 import es.microforum.serviceapi.EmpleadoService;
-import es.microforum.serviceimpl.repository.EmpleadoRepository;
+import es.microforum.serviceimplrepository.EmpleadoRepository;
 
 
 @Service("jpaEmpleadoService")

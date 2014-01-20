@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import java.text.SimpleDateFormat;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,9 +14,9 @@ public class EmpresaModelTest {
 	Empresa empresa1;
 	Empresa empresa2;
 	SimpleDateFormat sdf;
+	
 	@Before
 	public void setUp() throws Exception {
-		String s ="Empresa - nif: 1, version: 0, nombre: nombre, direccionFiscal: direccionFiscal1, fechaInicioActividades: 25-05-1995";
 		sdf = new SimpleDateFormat("dd-MM-yyyy");
 		empresa1 = new Empresa();
 		empresa2 = new Empresa();
