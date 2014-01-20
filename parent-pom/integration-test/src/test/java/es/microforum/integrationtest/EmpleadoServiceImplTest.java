@@ -8,8 +8,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
@@ -18,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 import es.microforum.model.Empleado;
 import es.microforum.model.Empresa;
 import es.microforum.serviceapi.EmpleadoService;
-import es.microforum.serviceimpl.EmpleadoServiceImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:spring-data-app-context.xml"})
@@ -26,6 +26,8 @@ import es.microforum.serviceimpl.EmpleadoServiceImpl;
 
 public class EmpleadoServiceImplTest {
 
+		private static final Logger logger = LoggerFactory.getLogger(EmpleadoServiceImplTest.class);
+	
         @Autowired     
         EmpleadoService empleadoService;
         
