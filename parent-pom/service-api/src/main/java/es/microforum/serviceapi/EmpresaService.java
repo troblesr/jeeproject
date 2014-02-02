@@ -2,7 +2,8 @@ package es.microforum.serviceapi;
 
 import java.util.List;
 
-//import es.microforum.model.Empleado;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import es.microforum.model.Empresa;
 
 public interface EmpresaService {
@@ -21,6 +22,12 @@ public interface EmpresaService {
 	
 	//find by Nombre
 	public List<Empresa> findByNombre(String nombre);
+	
+	//Find by nombre
+	public Page<Empresa> findByNombre(Pageable pageable, String nombre);
+	
+	//Find by nombre
+	public Page<Empresa> findAll(Pageable pageable);
 	
 	//public List<Empleado> findAllEmpleados();
 }

@@ -41,6 +41,7 @@ public class EmpleadoServiceImplTest {
         public void setUp() throws Exception {
                 empleado = new Empleado("1");
                 empleado.setNombre("nombre");
+                empleado.setVersion(0);
                 empleadoSaveDelete = new Empleado("125");
                 empleadoService.save(empleado);
         }

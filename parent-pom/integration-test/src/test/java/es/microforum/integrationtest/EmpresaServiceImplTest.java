@@ -37,6 +37,7 @@ public class EmpresaServiceImplTest {
 	public void setUp() throws Exception {
 		empresa = new Empresa("1");
 		empresa.setNombre("Empresa1");
+		empresa.setVersion(0);
 		empresaSave = new Empresa("125");
 		//empleados.add(empleado1);
 		//empleados.add(empleado2);
