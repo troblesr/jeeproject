@@ -39,7 +39,7 @@ public class EmpleadoServiceImplTest {
         
         @Before
         public void setUp() throws Exception {
-                empleado = new Empleado("1");
+                empleado = new Empleado("9999");
                 empleado.setNombre("nombre");
                 empleado.setVersion(0);
                 empleadoSaveDelete = new Empleado("125");
@@ -54,8 +54,8 @@ public class EmpleadoServiceImplTest {
 
         @Test
         public void testFindById() {
-                empleado = empleadoService.findById("1");
-                assertTrue(empleado.getDni().equals("1"));
+                empleado = empleadoService.findById("9999");
+                assertTrue(empleado.getDni().equals("9999"));
         }
 
         @Test

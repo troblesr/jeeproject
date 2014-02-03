@@ -35,8 +35,8 @@ public class EmpresaServiceImplTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		empresa = new Empresa("1");
-		empresa.setNombre("Empresa1");
+		empresa = new Empresa("9999");
+		empresa.setNombre("Empresa9999");
 		empresa.setVersion(0);
 		empresaSave = new Empresa("125");
 		//empleados.add(empleado1);
@@ -54,8 +54,8 @@ public class EmpresaServiceImplTest {
 	
 	@Test
 	public void testFindByNif() {
-		empresa = empresaService.findByNif("1");
-		assertTrue(empresa.getNif().equals("1"));
+		empresa = empresaService.findByNif("9999");
+		assertTrue(empresa.getNif().equals("9999"));
 	}
 
 	@Test
@@ -75,7 +75,7 @@ public class EmpresaServiceImplTest {
 	
 	@Test
 	public void testFindByNombre(){
-		List<Empresa> empresas = empresaService.findByNombre("Empresa1");
+		List<Empresa> empresas = empresaService.findByNombre("Empresa9999");
 		assertTrue(empresas.contains(empresa));
 	}
 	/*@Test
