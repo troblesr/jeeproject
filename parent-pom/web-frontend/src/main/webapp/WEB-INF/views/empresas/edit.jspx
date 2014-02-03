@@ -13,6 +13,8 @@
     <spring:message code="label_empresa_fecha" var="labelEmpresaFecha" />
     <spring:message code="label_empresa_nif" var="labelEmpresaNif"/>
     <spring:eval expression="empresa.nif == null ? labelEmpresaNew:labelEmpresaUpdate" var="formTitle"/>
+    <spring:message code="date_format_pattern" var="dateFormatPattern"/>
+    
     <script type="text/javascript">
     $(function(){ 
         $('#fechaInicioActividades').datepicker({ 
@@ -58,14 +60,14 @@
             <form:errors path="direccionFiscal" cssClass="error" />
         </div>
         <p/>             
-        <!--  <form:label path="fechaInicioActividades">
+        <form:label path="fechaInicioActividades">
             ${labelEmpresaFecha}
         </form:label>
-        <form:input path="fechaInicioActividades" />    
+        <form:input path="fechaInicioActividades" value="${fecha}" pattern="${dateFormatPattern}" />    
         <div>
             <form:errors path="fechaInicioActividades" cssClass="error" />
         </div>        
-        <p/>  -->
+        <p/>
         
         <form:hidden path="version" />
         

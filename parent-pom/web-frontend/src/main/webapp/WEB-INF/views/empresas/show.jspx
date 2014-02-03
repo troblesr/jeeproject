@@ -14,6 +14,8 @@
     <spring:message code="label_empresa_nif" var="labelEmpresaNif"/>
     <spring:message code="label_empresa_update" var="labelEmpresaUpdate"/>
     <spring:message code="label_empresa_eliminar" var="labelEmpresaEliminar"/>
+    <spring:message code="label_empresa_fecha" var="labelEmpresaFecha"/>
+    <spring:message code="date_format_pattern" var="dateFormatPattern"/>
     
     <spring:url value="/empresas" var="editEmpresaUrl"/>    
 
@@ -37,7 +39,11 @@
             <tr>
                 <td>${labelEmpresaDireccion}</td>
                 <td>${empresa.direccionFiscal}</td>
-            </tr>   
+            </tr> 
+            <tr>
+                <td>${labelEmpresaFecha}</td>
+                <td><joda:format value="${fecha}" pattern="${dateFormatPattern}"/></td>
+            </tr>    
         </table>         
        
         <a href="${editEmpresaUrl}/${empresa.nif}?form">${labelEmpresaUpdate}</a> 

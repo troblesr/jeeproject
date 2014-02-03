@@ -8,7 +8,7 @@
 	<spring:message code="label_empresa_list" var="labelEmpresaList" />
 	<spring:message code="label_empresa_nombre" var="labelEmpresaNombre" />
 	<spring:message code="label_empresa_direccion" var="labelEmpresaDireccion" />
-	<spring:message code="label_empresa_fecha" var="labelEmpresaFecha" />
+	<spring:message code="label_empresa_nif" var="labelEmpresaNif" />
 	<spring:url value="/empresas/" var="showEmpresaUrl" />
 
 	<script type="text/javascript">
@@ -17,9 +17,14 @@
 					{
 						datatype : 'json',
 						mtype : 'GET',
-						colNames : [ '${labelEmpresaNombre}',
-								'${labelEmpresaDireccion}','${labelEmpresaFecha}'],
+						colNames : [ '${labelEmpresaNif}',
+								'${labelEmpresaNombre}','${labelEmpresaDireccion}'],
 						colModel : [ {
+							name : 'nif',
+							index : 'nif',
+							sortable : false,
+							width : 150
+						},{
 							name : 'nombre',
 							index : 'nombre',
 							sortable : false,
@@ -29,16 +34,7 @@
 							index : 'direccionFiscal',
 							sortable : false,
 							width : 100
-						}, {
-							name : 'fechaInicioActividades',
-							index : 'fechaInicioActividades',
-							sortable : false,
-							width : 100,
-							formatter: 'date', formatoptions : {
-								srcformat : 'Y-m-d',
-								newformat : 'Y-m-d'
-								}
-						} ],
+						}],
 						jsonReader : {
 							root : "empresaData",
 							page : "currentPage",
