@@ -56,6 +56,7 @@ public class EmpleadoController {
 	public String show(@PathVariable("id") String id, Model uiModel) {
 		Empleado empleado = empleadoService.findById(id);
 		uiModel.addAttribute("empleado", empleado);
+		uiModel.addAttribute("empresa",empleado.getEmpresa().getNif());
 		return "empleados/show";
 	}
 
@@ -92,10 +93,8 @@ public class EmpleadoController {
 	//Mostrar menu de edicion de empleado
 	@RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
 	public String updateForm(@PathVariable("id") String id, Model uiModel) {
+		uiModel.addAttribute("empleado", empleadoService.findByIdWithEmpresa(id) );
 		uiModel.addAttribute("empresas",empresaService.findAll());
-		Empleado empleado = empleadoService.findByIdWithEmpresa(id);
-		//empleado.getEmpresa().setEmpleados(null);
-		uiModel.addAttribute("empleado", empleado );
 		return "empleados/update";
 	}
 	
@@ -131,8 +130,8 @@ public class EmpleadoController {
 	@RequestMapping(params = "form", method = RequestMethod.GET)
 	public String createForm(Model uiModel) {
 		Empleado empleado = new Empleado();
-		uiModel.addAttribute("empresas",empresaService.findAll());
 		uiModel.addAttribute("empleado", empleado);
+		uiModel.addAttribute("empresas",empresaService.findAll());
 		return "empleados/create";
 	}
 	

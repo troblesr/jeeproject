@@ -14,7 +14,13 @@
     <spring:message code="label_empleado_dni" var="labelEmpleadoDni"/>
     <spring:message code="label_empleado_update" var="labelEmpleadoUpdate"/>
     <spring:message code="label_empleado_eliminar" var="labelEmpleadoEliminar"/>
-    
+    <spring:message code="label_empleado_empresa" var="labelEmpleadoEmpresa"/>
+    <spring:message code="label_empleado_tipoempleado" var="labelEmpleadoTipoEmpleado"/>
+    <spring:message code="label_empleado_empleadocol" var="labelEmpleadoEmpleadoCol"/>
+    <spring:message code="label_empleado_salarioanual" var="labelEmpleadoSalarioAnual"/>
+    <spring:message code="label_empleado_valorhora" var="labelEmpleadoValorHora"/>
+    <spring:message code="label_empleado_cantidadhoras" var="labelCantidadHoras"/>
+    <spring:message code="label_empleado_imagen" var="labelEmpleadoImagen"/>
     <spring:url value="/empleados" var="editEmpleadoUrl"/>    
 
     <h1>${labelEmpleadoInfo}</h1>
@@ -37,7 +43,35 @@
             <tr>
                 <td>${labelEmpleadoDireccion}</td>
                 <td>${empleado.direccion}</td>
-            </tr>   
+            </tr> 
+            <tr>
+                <td>${labelEmpleadoEmpresa}</td>
+                <td>${empresa}</td>
+            </tr>
+            <tr>
+                <td>${labelEmpleadoTipoEmpleado}</td>
+                <td>${empleado.tipoEmpleado}</td>
+            </tr>  
+            <tr>
+                <td>${labelEmpleadoEmpleadoCol}</td>
+                <td>${empleado.empleadocol}</td>
+            </tr>  
+            <tr>
+                <td>${labelEmpleadoSalarioAnual}</td>
+                <td>${empleado.salarioAnual}</td>
+            </tr>  
+            <tr>
+                <td>${labelEmpleadoValorHora}</td>
+                <td>${empleado.valorHora}</td>
+            </tr>  
+            <tr>
+                <td>${labelCantidadHoras}</td>
+                <td>${empleado.cantidadHoras}</td>
+            </tr>     
+            <tr>
+                <td>${labelEmpleadoImagen}</td>
+                <td>${empleado.imagen}</td>
+            </tr>                            
         </table>         
        
         <a href="${editEmpleadoUrl}/${empleado.dni}?form">${labelEmpleadoUpdate}</a> 
