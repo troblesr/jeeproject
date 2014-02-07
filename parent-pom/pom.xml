@@ -31,6 +31,11 @@
 		<commonsfileupload.version>1.2</commonsfileupload.version>
 		<validationapi.version>1.0.0.GA</validationapi.version>
 		<hibernatevalidator.version>4.2.0.Final</hibernatevalidator.version>
+		<springrest.version>3.2.1.RELEASE</springrest.version>
+		<springrestwebmvc.version>1.1.0.M1</springrestwebmvc.version>
+		<javaxservletapi.version>3.0.1</javaxservletapi.version>
+		<commonshttpclient.version>3.1</commonshttpclient.version>
+		<springdatajpa.version>1.3.0.RELEASE</springdatajpa.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -82,7 +87,7 @@
 			<dependency>
 	            <groupId>org.springframework.data</groupId>
 	            <artifactId>spring-data-jpa</artifactId>
-	            <version>${springdata.version}</version>	
+	            <version>${springdatajpa.version}</version>	
         	</dependency>
         	<!-- Contiene la lista que se emplea en las implementaciones de los servicios -->
 			<dependency>
@@ -256,7 +261,31 @@
 				<artifactId>validation-api</artifactId>
 				<version>${validationapi.version}</version>
 			</dependency>
-
+			<!-- service-frontend -->
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-rest-webmvc</artifactId>
+				<version>${springrestwebmvc.version}</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>${javaxservletapi.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>${springrest.version}</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${springrest.version}</version>
+				<scope>compile</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
