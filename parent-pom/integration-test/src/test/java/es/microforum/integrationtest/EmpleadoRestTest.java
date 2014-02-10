@@ -50,10 +50,9 @@ public class EmpleadoRestTest {
 	ApplicationContext context;
     
     Empleado empleadoSaveDelete;
-    Empleado empleado;
     URI uri;
 	String acceptHeaderValue;
-    String jpaWebContext = "http://localhost:8081/spring-rest-1.0.0.BUILD-SNAPSHOT/";
+    String jpaWebContext = "http://localhost:8081/service-frontend-0.0.3-SNAPSHOT/";
 	private JdbcTemplate jdbcTemplate;
     
     byte[] imagen;
@@ -63,12 +62,13 @@ public class EmpleadoRestTest {
     public void setUp() throws Exception {
 		DataSource dataSource = (DataSource) context.getBean("dataSource");
 		jdbcTemplate = new JdbcTemplate(dataSource);
-		jdbcTemplate.execute("INSERT INTO empleado values('9999','nombre','BORRAR','BORRAR','BORRAR',1000.0,1.0,1000,null,4,0)");
+		jdbcTemplate.execute("INSERT INTO empresa values('9999','empresa','direccion','2014-01-28',0)");
+		jdbcTemplate.execute("INSERT INTO empleado values('9999','nombre','BORRAR','BORRAR','BORRAR',1000.0,1.0,1000,null,9999,0)");
 		uri = new URI(jpaWebContext+"empleado/9999");
 		acceptHeaderValue = "application/json";
     }
 	
-	/*@Test
+	@Test
 	public void getTest() {
 		try {
 			Resource<Empleado> resource = getEmpleado(uri);
@@ -101,7 +101,7 @@ public class EmpleadoRestTest {
 	public void saveTest() throws RestClientException, URISyntaxException {
 		jdbcTemplate.execute("DELETE FROM empleado where dni ='9999'");
 		
-		String url = jpaWebContext+"empleado/9999";
+		String url = jpaWebContext+"empleado";
 		
 		HttpHeaders requestHeaders = new HttpHeaders();
 		List<MediaType> mediaTypes = new ArrayList<MediaType>();
@@ -111,17 +111,16 @@ public class EmpleadoRestTest {
 		
 		HttpMethod post = HttpMethod.POST;
 		
-		String body = "{\"dni\":\"9999\",\"nombre\":\"nombre\",\"tipoEmpleado\":\"BORRAR\",\"empleadocol\":\"BORRAR\",\"salarioAnual\":\"1000.0\",\"valorHora\":\"1.0\",\"cantidadHoras\":\"1000\",\"imagen\":\"null\",\"nif\":\"4\",\"version\":\"0\"}";
+		String body = "{\"dni\":\"9999\",\"nombre\":\"nombre\",\"tipoEmpleado\":\"BORRAR\",\"empleadocol\":\"BORRAR\",\"salarioAnual\":1000.0,\"valorHora\":1.0,\"cantidadHoras\":1000,\"imagen\":null,\"version\":0}";
 		HttpEntity<String> entity = new HttpEntity<String>(body, requestHeaders);
 
 		ResponseEntity<String> response = restTemplate.exchange(url, post, entity, String.class);
 		assertTrue(response.getStatusCode().equals(HttpStatus.CREATED));
 		}
-	*/
+	
     
     @Test
-	public void putTest() throws RestClientException, URISyntaxException {
-		//jdbcTemplate.execute("INSERT INTO empleado values(INSERT INTO empleado values('9999','nombre','BORRAR','BORRAR','BORRAR',1000.0,1.0,1000,null,4,0))");
+	public void modificarTest() throws RestClientException, URISyntaxException {		
 		String url = jpaWebContext + "empleado/9999";
 		String acceptHeaderValue = "application/json";
 
@@ -142,6 +141,7 @@ public class EmpleadoRestTest {
 	@After
 	public void after() {
 		jdbcTemplate.execute("DELETE FROM empleado where dni=9999");
+		jdbcTemplate.execute("DELETE FROM empresa where nif=9999");
 	}
 
 }

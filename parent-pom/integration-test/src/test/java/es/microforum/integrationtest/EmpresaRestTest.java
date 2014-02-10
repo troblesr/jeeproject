@@ -49,10 +49,9 @@ public class EmpresaRestTest {
 	ApplicationContext context;
     
     Empresa empresaSaveDelete;
-    Empresa empresa;
     URI uri;
 	String acceptHeaderValue;
-    String jpaWebContext = "http://localhost:8081/spring-rest-1.0.0.BUILD-SNAPSHOT/";
+    String jpaWebContext = "http://localhost:8081/service-frontend-0.0.3-SNAPSHOT/";
 	private JdbcTemplate jdbcTemplate;
     
     byte[] imagen;
@@ -94,12 +93,12 @@ public class EmpresaRestTest {
 		}
 		assertTrue(empresaService.findByNif("9999")==null);
 	}
-	/*
+	
 	@Test
 	public void saveTest() throws RestClientException, URISyntaxException {
-		jdbcTemplate.execute("DELETE FROM empleado where dni ='9999'");
+		jdbcTemplate.execute("DELETE FROM empresa where nif ='9999'");
 		
-		String url = jpaWebContext+"empleado/9999";
+		String url = jpaWebContext+"empresa";
 		
 		HttpHeaders requestHeaders = new HttpHeaders();
 		List<MediaType> mediaTypes = new ArrayList<MediaType>();
@@ -109,17 +108,16 @@ public class EmpresaRestTest {
 		
 		HttpMethod post = HttpMethod.POST;
 		
-		String body = "{\"dni\":\"9999\",\"nombre\":\"nombre\",\"tipoEmpleado\":\"BORRAR\",\"empleadocol\":\"BORRAR\",\"salarioAnual\":\"1000.0\",\"valorHora\":\"1.0\",\"cantidadHoras\":\"1000\",\"imagen\":\"null\",\"nif\":\"4\",\"version\":\"0\"}";
+		String body = "{\"nif\":\"99999\",\"nombre\":\"empresa\",\"direccionFiscal\":\"direccion\",\"fechaInicioActividades\":\"2014-01-28\",\"version\":0}";
 		HttpEntity<String> entity = new HttpEntity<String>(body, requestHeaders);
 
 		ResponseEntity<String> response = restTemplate.exchange(url, post, entity, String.class);
 		assertTrue(response.getStatusCode().equals(HttpStatus.CREATED));
 		}
-	*/
+	
 	
     @Test
-	public void putTest() throws RestClientException, URISyntaxException {
-		//jdbcTemplate.execute("INSERT INTO empresa values(INSERT INTO emperesa values('9999','empresa','direccion','2014-01-28',0))");
+	public void putTest() throws RestClientException, URISyntaxException {		
 		String url = jpaWebContext + "empresa/9999";
 		String acceptHeaderValue = "application/json";
 
