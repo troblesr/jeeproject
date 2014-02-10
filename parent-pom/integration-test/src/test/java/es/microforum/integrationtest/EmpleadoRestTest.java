@@ -111,7 +111,7 @@ public class EmpleadoRestTest {
 		
 		HttpMethod post = HttpMethod.POST;
 		
-		String body = "{\"dni\":\"9999\",\"nombre\":\"nombre\",\"tipoEmpleado\":\"BORRAR\",\"empleadocol\":\"BORRAR\",\"salarioAnual\":1000.0,\"valorHora\":1.0,\"cantidadHoras\":1000,\"imagen\":null,\"version\":0}";
+		String body = "{\"dni\":\"9999\",\"nombre\":\"nombre\",\"tipoEmpleado\":\"BORRAR\",\"empleadocol\":\"BORRAR\",\"salarioAnual\":1000.0,\"valorHora\":1.0,\"cantidadHoras\":1000,\"imagen\":null,\"empresa\":{\"nif\":9999,\"version\":0},\"version\":0}";
 		HttpEntity<String> entity = new HttpEntity<String>(body, requestHeaders);
 
 		ResponseEntity<String> response = restTemplate.exchange(url, post, entity, String.class);
