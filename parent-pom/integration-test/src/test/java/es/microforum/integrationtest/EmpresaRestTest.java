@@ -31,48 +31,46 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import es.microforum.model.Empleado;
 import es.microforum.model.Empresa;
-import es.microforum.serviceapi.EmpleadoService;
+import es.microforum.serviceapi.EmpresaService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:spring-data-app-context.xml"})
 @TransactionConfiguration(defaultRollback = true)
 
-public class EmpleadoRestTest {
+public class EmpresaRestTest {
 
 	RestTemplate restTemplate = new RestTemplate();
 
     @Autowired     
-    EmpleadoService empleadoService;
+    EmpresaService empresaService;
     
 	@Autowired
 	ApplicationContext context;
     
-    Empleado empleadoSaveDelete;
-    Empleado empleado;
+    Empresa empresaSaveDelete;
+    Empresa empresa;
     URI uri;
 	String acceptHeaderValue;
     String jpaWebContext = "http://localhost:8081/spring-rest-1.0.0.BUILD-SNAPSHOT/";
 	private JdbcTemplate jdbcTemplate;
     
     byte[] imagen;
-    Empresa empresa;
     
     @Before
     public void setUp() throws Exception {
 		DataSource dataSource = (DataSource) context.getBean("dataSource");
 		jdbcTemplate = new JdbcTemplate(dataSource);
-		jdbcTemplate.execute("INSERT INTO empleado values('9999','nombre','BORRAR','BORRAR','BORRAR',1000.0,1.0,1000,null,4,0)");
-		uri = new URI(jpaWebContext+"empleado/9999");
+		jdbcTemplate.execute("INSERT INTO empresa values('9999','empresa','direccion','2014-01-28',0)");
+		uri = new URI(jpaWebContext+"empresa/9999");
 		acceptHeaderValue = "application/json";
     }
 	
-	/*@Test
+	@Test
 	public void getTest() {
 		try {
-			Resource<Empleado> resource = getEmpleado(uri);
-			assertTrue(resource.getContent().getNombre().equals("nombre"));
+			Resource<Empresa> resource = getEmpresa(uri);
+			assertTrue(resource.getContent().getNombre().equals("empresa"));
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail();
@@ -80,23 +78,23 @@ public class EmpleadoRestTest {
 	}
 	
 
-	private Resource<Empleado> getEmpleado(URI uri) {
-		return restTemplate.exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<Resource<Empleado>>() {
+	private Resource<Empresa> getEmpresa(URI uri) {
+		return restTemplate.exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<Resource<Empresa>>() {
 		}).getBody();
 
 	}
-	
+    
 	@Test
 	public void deleteTest() {
 		try {
-			restTemplate.delete(jpaWebContext + "empleado/9999");
+			restTemplate.delete(jpaWebContext + "empresa/9999");
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail();
 		}
-		assertTrue(empleadoService.findById("9999")==null);
+		assertTrue(empresaService.findByNif("9999")==null);
 	}
-	
+	/*
 	@Test
 	public void saveTest() throws RestClientException, URISyntaxException {
 		jdbcTemplate.execute("DELETE FROM empleado where dni ='9999'");
@@ -118,11 +116,11 @@ public class EmpleadoRestTest {
 		assertTrue(response.getStatusCode().equals(HttpStatus.CREATED));
 		}
 	*/
-    
+	
     @Test
 	public void putTest() throws RestClientException, URISyntaxException {
-		//jdbcTemplate.execute("INSERT INTO empleado values(INSERT INTO empleado values('9999','nombre','BORRAR','BORRAR','BORRAR',1000.0,1.0,1000,null,4,0))");
-		String url = jpaWebContext + "empleado/9999";
+		//jdbcTemplate.execute("INSERT INTO empresa values(INSERT INTO emperesa values('9999','empresa','direccion','2014-01-28',0))");
+		String url = jpaWebContext + "empresa/9999";
 		String acceptHeaderValue = "application/json";
 
 		HttpHeaders requestHeaders = new HttpHeaders();
@@ -138,10 +136,10 @@ public class EmpleadoRestTest {
 		ResponseEntity<String> response = restTemplate.exchange(url, put, entity, String.class);
 		assertTrue(response.getStatusCode().equals(HttpStatus.NO_CONTENT));
 	}
-    
+	
 	@After
 	public void after() {
-		jdbcTemplate.execute("DELETE FROM empleado where dni=9999");
+		jdbcTemplate.execute("DELETE FROM empresa where nif=9999");
 	}
 
 }
