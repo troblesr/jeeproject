@@ -37,10 +37,14 @@ public class EmpleadoServiceImplTest {
         byte[] imagen;
         Empresa empresa;
         
+        Double porcentaje;
+        
         @Before
         public void setUp() throws Exception {
                 empleado = new Empleado("9999");
                 empleado.setNombre("nombre");
+                empleado.setSalarioAnual(20000.0);
+                porcentaje = 5.0; 
                 empleado.setVersion(0);
                 empleadoSaveDelete = new Empleado("125");
                 empleadoService.save(empleado);
@@ -77,6 +81,11 @@ public class EmpleadoServiceImplTest {
         public void testFindByNombre() {                
                 List<Empleado> listado = empleadoService.findByNombre("nombre");
                 assertTrue(listado.contains(empleado));
+        }
+        @Test
+        public void testAumentoSalario() {                
+                empleadoService.aumentoSalario(porcentaje);
+                assertTrue(empleadoService.findById("9999").getSalarioAnual().equals(21000.0));
         }
         
         @After

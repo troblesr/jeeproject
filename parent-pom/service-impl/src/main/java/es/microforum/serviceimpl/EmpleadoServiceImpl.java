@@ -68,4 +68,13 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 		empresa.getEmpleados().size();
 		return empleado;
 	}
+
+	@Override
+	public void aumentoSalario(Double porcentaje) {
+		List<Empleado> empleados = Lists.newArrayList(empleadoRepository.findAll());
+		for(Empleado empleado: empleados){
+			empleado.setSalarioAnual(empleado.getSalarioAnual()+empleado.getSalarioAnual()*(porcentaje/100.0));
+			empleadoRepository.save(empleado);
+		}
+	}
 }

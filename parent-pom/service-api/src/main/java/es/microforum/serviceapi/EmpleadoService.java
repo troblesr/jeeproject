@@ -30,4 +30,7 @@ public interface EmpleadoService {
 	
 	//Find by nombre
 	public Page<Empleado> findAll(Pageable pageable);
+	
+	//Aumenta el sueldo de todos los empleados
+	public void aumentoSalario(Double porcentaje);
 }
