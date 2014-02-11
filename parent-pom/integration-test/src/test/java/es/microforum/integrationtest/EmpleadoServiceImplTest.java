@@ -33,6 +33,7 @@ public class EmpleadoServiceImplTest {
         
         Empleado empleadoSaveDelete;
         Empleado empleado;
+        Empleado ampliarSueldo;
         
         byte[] imagen;
         Empresa empresa;
@@ -83,9 +84,18 @@ public class EmpleadoServiceImplTest {
                 assertTrue(listado.contains(empleado));
         }
         @Test
-        public void testAumentoSalario() {                
-                empleadoService.aumentoSalario(porcentaje);
-                assertTrue(empleadoService.findById("9999").getSalarioAnual().equals(21000.0));
+        @Transactional
+        public void testAumentoSalario() {
+        	//Borramos el empleado de prueba del resto de test ya que produce un StaleObjectException
+        	empleadoService.delete(empleado);
+        	
+        	ampliarSueldo = new Empleado("8888");
+        	ampliarSueldo.setSalarioAnual(20000.0);
+        	ampliarSueldo.setVersion(0);        	
+            empleadoService.save(ampliarSueldo);
+            
+            empleadoService.aumentoSalario(porcentaje);
+            assertTrue(empleadoService.findById("8888").getSalarioAnual().equals(21000.0));
         }
         
         @After
