@@ -51,7 +51,7 @@ public class EmpresaRestTest {
     Empresa empresaSaveDelete;
     URI uri;
 	String acceptHeaderValue;
-    String jpaWebContext = "http://localhost:8081/service-frontend-0.0.3-SNAPSHOT/";
+    String jpaWebContext = "http://localhost:8081/service-frontend/";
 	private JdbcTemplate jdbcTemplate;
     
     byte[] imagen;
