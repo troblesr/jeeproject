@@ -13,8 +13,8 @@ public class AumentoSalarioWebService implements IAumentoSalarioWebService{
 		this.empleadoService = empleadoService;
 	}
 	
-	@WebMethod(operationName="callAumento")
-	public void callAumento(Double porcentaje){
+	@WebMethod(operationName="callAumentoSalario")
+	public void callAumentoSalario(Double porcentaje){
 		empleadoService.aumentoSalario(porcentaje);
 	}
 }

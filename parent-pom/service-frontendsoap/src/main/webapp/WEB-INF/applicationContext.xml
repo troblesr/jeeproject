@@ -25,10 +25,10 @@
  
     <!-- Web service methods -->
     <bean id="aumentoSalarioWs" class="es.microforum.servicefrontendsoap.AumentoSalarioWebService">
-    	<property name="aumentoSalario" ref="aumentoSalario" />
+    	<property name="empleadoService" ref="empleadoService" />
     </bean>
  
-    <bean id="aumentoSalario" class="es.microforum.serviceimpl.EmpleadoServiceImpl" />
+    <bean id="empleadoService" class="es.microforum.serviceimpl.EmpleadoServiceImpl" />
  
     <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" name="dataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />

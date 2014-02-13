@@ -5,6 +5,6 @@ import javax.jws.WebService;
 
 @WebService
 public interface IAumentoSalarioWebService {
-	@WebMethod(operationName = "callAumento")
-	public void callAumento(Double porcentaje);
+	@WebMethod(operationName = "callAumentoSalario")
+	public void callAumentoSalario(Double porcentaje);
 }
